@@ -76,7 +76,7 @@ public class Image11 extends Application {
                 return;
             }
 
-            mechanicRequestLabel.setText("A mechanic is requesting access to vehicle data for Vehicle ID " + vehicleId);
+            mechanicRequestLabel.setText("The mechanic is requesting access to vehicle data for Vehicle ID " + vehicleId);
             reasonDisplayLabel.setText("Reason: " + (reason.isEmpty() ? "No reason provided" : reason));
 
             window.setScene(approvalScene);

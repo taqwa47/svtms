@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -41,14 +40,8 @@ public class Image08 extends Application {
         Label point3 = new Label("• Maintenance Logs");
         point3.setFont(new Font("Arial", 14));
 
-        // Footer Note
-        Label footerNote = new Label("Sensitive information will be protected\nand securely transmitted.");
-        footerNote.setFont(new Font("Arial", 12));
-        footerNote.setTextFill(Color.GRAY);
-        footerNote.setAlignment(Pos.CENTER);
-
         // Layout
-        VBox vbox = new VBox(20, title, shareButton, infoText, point1, point2, point3, footerNote);
+        VBox vbox = new VBox(20, title, shareButton, infoText, point1, point2, point3);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPadding(new Insets(30));
 

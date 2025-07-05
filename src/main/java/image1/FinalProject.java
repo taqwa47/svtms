@@ -5,16 +5,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.chart.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class FinalProject extends Application {
-
     Stage window;
-
     // Scenes
     Scene mainMenu, vehicleStatusScene, scheduleScene, alertScene, requestDiagnosticsScene, maintenanceHistoryScene, predictiveAnalyticsScene, shareDataScene, problemReportScene, systemMonitorScene, vehicleAccessScene;
 
