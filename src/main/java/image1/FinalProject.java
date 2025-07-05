@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class FinalProject extends Application {
     Stage window;
     // Scenes
-    Scene mainMenu, vehicleStatusScene, scheduleScene, alertScene, requestDiagnosticsScene, maintenanceHistoryScene, predictiveAnalyticsScene, shareDataScene, problemReportScene, systemMonitorScene, vehicleAccessScene;
+    Scene mainMenu, loginScene, vehicleStatusScene, scheduleScene, alertScene, requestDiagnosticsScene, maintenanceHistoryScene, predictiveAnalyticsScene, shareDataScene, problemReportScene, systemMonitorScene, vehicleAccessScene;
 
     // Shared Data
     String requestedVehicleId = "";
@@ -24,6 +24,7 @@ public class FinalProject extends Application {
         window = primaryStage;
 
         // === Main Menu ===
+        Button btnLogin = new Button("Authenticate // Log in");
         Button btnVehicleStatus = new Button("Vehicle Status");
         Button btnSchedule = new Button("Schedule Maintenance");
         Button btnCriticalAlert = new Button("Critical Alert");
@@ -35,13 +36,14 @@ public class FinalProject extends Application {
         Button btnSystemMonitor = new Button("System Monitor");
         Button btnVehicleAccess = new Button("Request Vehicle Access");
 
-        VBox menuLayout = new VBox(15, btnVehicleStatus, btnSchedule, btnCriticalAlert, btnRequestDiagnostics, btnMaintenanceHistory, btnPredictiveAnalytics, btnShareData, btnProblemReport, btnSystemMonitor, btnVehicleAccess);
+        VBox menuLayout = new VBox(15, btnLogin, btnVehicleStatus, btnSchedule, btnCriticalAlert, btnRequestDiagnostics, btnMaintenanceHistory, btnPredictiveAnalytics, btnShareData, btnProblemReport, btnSystemMonitor, btnVehicleAccess);
         menuLayout.setAlignment(Pos.CENTER);
         menuLayout.setPadding(new Insets(20));
 
         mainMenu = new Scene(menuLayout, 600, 600);
 
         // === Build All Screens ===
+        buildLoginScreen();
         buildVehicleStatusScreen();
         buildScheduleScreen();
         buildAlertScreen();
@@ -54,6 +56,7 @@ public class FinalProject extends Application {
         buildVehicleAccessScreen();
 
         // === Button Actions ===
+        btnLogin.setOnAction(e -> window.setScene(loginScene));
         btnVehicleStatus.setOnAction(e -> window.setScene(vehicleStatusScene));
         btnSchedule.setOnAction(e -> window.setScene(scheduleScene));
         btnCriticalAlert.setOnAction(e -> window.setScene(alertScene));
@@ -70,6 +73,43 @@ public class FinalProject extends Application {
         window.setScene(mainMenu);
         window.show();
     }
+
+    private void buildLoginScreen() {
+        Label title = new Label("Authenticate // Log in");
+        title.setFont(new Font("Arial", 24));
+
+        Label usernameLabel = new Label("Username");
+        TextField usernameField = new TextField();
+        usernameField.setPromptText("Enter your username");
+
+        Label passwordLabel = new Label("Password");
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Enter your password");
+
+        Button loginButton = new Button("Login");
+        loginButton.setPrefWidth(200);
+
+        Label loginStatus = new Label();
+        loginStatus.setTextFill(Color.RED);
+
+        loginButton.setOnAction(e -> {
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+
+            if (username.equals("admin") && password.equals("admin")) {
+                window.setScene(mainMenu);
+            } else {
+                loginStatus.setText("Invalid username or password.");
+            }
+        });
+
+        VBox layout = new VBox(10, title, usernameLabel, usernameField, passwordLabel, passwordField, loginButton, loginStatus);
+        layout.setAlignment(Pos.CENTER);
+        layout.setPadding(new Insets(20));
+
+        loginScene = new Scene(layout, 600, 500);
+    }
+
 
     private void buildVehicleStatusScreen() {
         Label title = new Label("Vehicle Status 🚗");
